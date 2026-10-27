@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import './experience.css';
 export const metadata: Metadata = { title: 'Турниры прогнозистов · LEON Блог', description: 'Демонстрационная версия турниров прогнозистов LEON.' };
 export default function Layout({ children }: Readonly<{children: React.ReactNode}>) { return <html lang="ru"><body>{children}</body></html>; }

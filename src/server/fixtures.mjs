@@ -4,9 +4,9 @@ export const users = [
   { id: 'max', name: 'Максим Соколов', initials: 'МС', color: '#468f88' },
 ];
 export const tournaments = [
-  { id: 'weekend', name: 'Футбольные выходные', subtitle: 'Большие матчи. Твои решения.', description: 'Собери свой лучший прогноз на главные матчи европейского футбола. Начни с 1 000 Леонкоинов и поднимись в таблице по ROI.', status: 'active', theme: 'green', prize: '50 000 ₽', prizeNote: 'фрибетами', label: 'ТУРНИР НЕДЕЛИ', dates: '27 окт — 02 ноя', startBank: 100000, minStake: 5000, maxStake: 20000 },
-  { id: 'champions', name: 'Ночь чемпионов', subtitle: 'Всё решается на поле.', description: 'Европейские вечера и самые смелые футбольные прогнозы. Следующий турнир уже скоро.', status: 'scheduled', theme: 'purple', prize: '30 000 ₽', prizeNote: 'бонусами', label: 'СКОРО СТАРТ', dates: '03 ноя — 06 ноя', startBank: 100000, minStake: 5000, maxStake: 20000 },
-  { id: 'derby', name: 'Время дерби', subtitle: 'Город один. Победитель тоже.', description: 'Первый демонстрационный турнир завершён. Смотри итоговую таблицу и историю прогнозов.', status: 'finished', theme: 'orange', prize: '20 000 ₽', prizeNote: 'фрибетами', label: 'АРХИВ ТУРНИРОВ', dates: '20 окт — 26 окт', startBank: 100000, minStake: 5000, maxStake: 20000 },
+  { id: 'weekend', name: 'Футбольные выходные', subtitle: 'Большие матчи. Твои решения.', description: 'Собери свой лучший прогноз на главные матчи европейского футбола. Начни с 1 000 Леонкоинов и поднимись в таблице по ROI.', status: 'active', theme: 'green', prize: '50 000', prizeNote: 'Леонкоинов', label: 'ТУРНИР НЕДЕЛИ', dates: '27 окт — 02 ноя', startBank: 100000, minStake: 5000, maxStake: 20000 },
+  { id: 'champions', name: 'Ночь чемпионов', subtitle: 'Всё решается на поле.', description: 'Европейские вечера и самые смелые футбольные прогнозы. Следующий турнир уже скоро.', status: 'scheduled', theme: 'purple', prize: '30 000', prizeNote: 'Леонкоинов', label: 'СКОРО СТАРТ', dates: '03 ноя — 06 ноя', startBank: 100000, minStake: 5000, maxStake: 20000 },
+  { id: 'derby', name: 'Время дерби', subtitle: 'Город один. Победитель тоже.', description: 'Первый демонстрационный турнир завершён. Смотри итоговую таблицу и историю прогнозов.', status: 'finished', theme: 'orange', prize: '20 000', prizeNote: 'Леонкоинов', label: 'АРХИВ ТУРНИРОВ', dates: '20 окт — 26 окт', startBank: 100000, minStake: 5000, maxStake: 20000 },
 ];
 export function makeMatches(now = Date.now()) {
   const pairs = [

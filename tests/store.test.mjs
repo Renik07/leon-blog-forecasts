@@ -46,3 +46,15 @@ test('invalid manual result rolls transaction back without changing balance',()=
  assert.throws(()=>s.settle('match-1',{home:-1,away:0,void:false,reason:'Ошибка'}));assert.equal(s.balance('weekend','alex'),90000);assert.equal(s.snapshot('alex').matches[0].status,'prematch');
  }finally{s.db.close();}
 });
+test('prize metadata upgrade preserves existing wallets, forecasts and tournament state',()=>{
+ const dir=mkdtempSync(join(tmpdir(),'leon-prizes-'));const path=join(dir,'test.sqlite');let s=createStore(path);
+ try {
+  s.join('weekend','alex');s.submit('weekend','alex',{matchId:'match-1',outcomeId:'home',stake:100,text:explanation,requestKey:'request-upgrade'});
+  const t=s.snapshot('alex').tournaments.find(t=>t.id==='weekend');
+  s.db.prepare('UPDATE documents SET body=? WHERE kind=? AND id=?').run(JSON.stringify({...t,status:'finished',prize:'50 000 ₽',prizeNote:'фрибетами'}),'tournament','weekend');
+  s.db.prepare('DELETE FROM documents WHERE kind=? AND id=?').run('meta','leoncoin-prizes');
+  s.db.close();s=createStore(path);
+  const updated=s.snapshot('alex');const tournament=updated.tournaments.find(t=>t.id==='weekend');
+  assert.equal(tournament.prize,'50 000');assert.equal(tournament.prizeNote,'Леонкоинов');assert.equal(tournament.status,'finished');assert.equal(s.balance('weekend','alex'),90000);assert.equal(updated.forecasts.length,1);
+ }finally{s.db.close();rmSync(dir,{recursive:true,force:true});}
+});
